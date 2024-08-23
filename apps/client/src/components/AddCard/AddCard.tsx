@@ -8,7 +8,7 @@ import { toastedApi } from "../../methods/toastedApi";
 export const AddCard = (props: AddCardProps) => {
   const classes = useStyles();
   const handleAdd = () => {
-    toastedApi({
+    toastedApi<Issue>({
       successMessage: "item added",
       errorMessage: "Something went wrong try again",
       api: addApi,
@@ -19,7 +19,8 @@ export const AddCard = (props: AddCardProps) => {
         handleError: (err) => {
           console.log(err);
         },
-        handleResponse: () => {
+        handleResponse: (response) => {
+          props.setData((prev) => [...prev, response]);
           props.handleCancel();
           setData({
             description: "",

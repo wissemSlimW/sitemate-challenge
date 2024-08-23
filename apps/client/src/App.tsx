@@ -3,13 +3,31 @@ import { useGetAllApi } from "./api/useGetAllApi";
 import { AddCard, Card } from "./components";
 import { useStyles } from "./style";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { useApi } from "./api/useApi";
 
 const App = () => {
-  const { data, ready } = useGetAllApi<Issue>({ endpoint: "issue" });
+  const [data, setData] = useState<Issue[]>([]);
+  const [ready, setReady] = useState<boolean>(false);
+  useApi<Issue>({
+    endpoint: "issue",
+    setData,
+    setReady,
+    handleError: (err) => console.log(err),
+  });
   const classes = useStyles();
   const [addIssue, setAddIssue] = useState(false);
 
+  const Skeleton = () => (
+    <div className={classes.skeletonContainer}>
+      <div className={classes.skeleonHeader}>
+        <div className={`${classes.titleSkeleton} ${classes.animation}`}></div>
+        <div className={`${classes.circleSkeleton} ${classes.animation}`}></div>
+        <div className={`${classes.circleSkeleton} ${classes.animation}`}></div>
+      </div>
+      <div className={`${classes.bodySkeleton} ${classes.animation}`}></div>
+    </div>
+  );
   return (
     <>
       <ToastContainer />
@@ -27,12 +45,19 @@ const App = () => {
         </div>
 
         <div className={classes.content}>
-          {addIssue && <AddCard handleCancel={() => setAddIssue(false)} />}
-          {!ready ? (
-            <div className={classes.loading}>Loading</div>
-          ) : (
-            data.map((item) => <Card data={item} />)
+          {addIssue && (
+            <AddCard
+              setData={setData}
+              handleCancel={() => setAddIssue(false)}
+            />
           )}
+          {!ready
+            ? Array(Math.floor(Math.random() * 8 + 2))
+                .fill("")
+                .map((_, i) => <Skeleton key={i} />)
+            : data.map((item) => (
+                <Card key={item._id} data={item} setData={setData} />
+              ))}
         </div>
       </div>
     </>

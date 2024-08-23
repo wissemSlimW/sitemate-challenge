@@ -27,7 +27,7 @@ export const useStyles = createUseStyles({
     height: 44,
   },
   content: {
-    padding:20,
+    padding: 20,
     flex: 1,
     display: "flex",
     gap: 15,
@@ -41,5 +41,36 @@ export const useStyles = createUseStyles({
     padding: 20,
     justifyContent: "center",
     textAlign: "center",
+  },
+
+  skeletonContainer: {
+    width: "min(300px, 100%)",
+    height: 250,
+    boxShadow: "1px 1px 7px #00000020",
+    borderRadius: 15,
+    padding: 10,
+    gap: 10,
+    background: "white",
+    display: "flex",
+    flexDirection: "column",
+  },
+  skeleonHeader: { display: "flex", gap: 10 },
+  titleSkeleton: { height: 44, flex: 1, borderRadius: 25 },
+  circleSkeleton: { height: 44, width: 44, borderRadius: "50%" },
+  bodySkeleton: { flex: 1, borderRadius: 25 },
+  animation: {
+    animation: "$placeHolderShimmer 1.25s forwards linear infinite",
+    background:
+      "linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%)",
+    backgroundSize: "800px 104px",
+    position: "relative",
+  },
+  "@keyframes placeHolderShimmer": {
+    "0%": {
+      backgroundPosition: "-468px 0",
+    },
+    "100%": {
+      backgroundPosition: "468px 0",
+    },
   },
 });

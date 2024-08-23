@@ -14,13 +14,21 @@ export const Card = (props: CardProps) => {
       api: updateApi,
       params: {
         body: data,
-        id: props.data.id,
+        id: props.data._id,
         endpoint: "issue",
         setReady: () => {},
         handleError: (err) => {
           console.log(err);
         },
-        handleResponse: () => setMode("view"),
+        handleResponse: (response) => {
+          setMode("view");
+          props.setData((prev) => {
+            const index = prev.findIndex((item) => item._id === props.data._id);
+            const _prev = [...prev];
+            _prev[index] = response;
+            return _prev;
+          });
+        },
       },
     });
   };
@@ -30,12 +38,16 @@ export const Card = (props: CardProps) => {
       errorMessage: "Something went wrong try again",
       api: removeApi,
       params: {
-        id: props.data.id!,
+        id: props.data._id!,
         endpoint: "issue",
         setReady: setDeleteRequest,
         handleError: (err) => {
           console.log(err);
         },
+        handleResponse: () =>
+          props.setData((prev) =>
+            prev.filter((item) => item._id !== props.data._id)
+          ),
       },
     });
   };

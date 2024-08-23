@@ -11,3 +11,4 @@ export const useGetAllApi = <T>({
   })
   return { ready, data };
 };
+    
