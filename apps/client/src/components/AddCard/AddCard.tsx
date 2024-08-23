@@ -9,8 +9,8 @@ export const AddCard = (props: AddCardProps) => {
   const classes = useStyles();
   const handleAdd = () => {
     toastedApi({
-      errorMessage: "item added",
-      successMessage: "Something went wrong try again",
+      successMessage: "item added",
+      errorMessage: "Something went wrong try again",
       api: addApi,
       params: {
         endpoint: "issue",
@@ -18,6 +18,13 @@ export const AddCard = (props: AddCardProps) => {
         body: data,
         handleError: (err) => {
           console.log(err);
+        },
+        handleResponse: () => {
+          props.handleCancel();
+          setData({
+            description: "",
+            title: "",
+          });
         },
       },
     });
@@ -57,10 +64,6 @@ export const AddCard = (props: AddCardProps) => {
           className={`${classes.btn} ${classes.cancel}`}
           onClick={() => {
             props.handleCancel();
-            setData({
-              description: "",
-              title: "",
-            });
           }}
         >
           Close

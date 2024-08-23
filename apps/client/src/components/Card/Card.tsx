@@ -9,8 +9,8 @@ export const Card = (props: CardProps) => {
   const classes = useStyles();
   const handleEdit = () => {
     toastedApi({
-      errorMessage: "item updated",
-      successMessage: "Something went wrong try again",
+      successMessage: "item updated",
+      errorMessage: "Something went wrong try again",
       api: updateApi,
       params: {
         body: data,
@@ -20,13 +20,14 @@ export const Card = (props: CardProps) => {
         handleError: (err) => {
           console.log(err);
         },
+        handleResponse: () => setMode("view"),
       },
     });
   };
   const handleDelete = () => {
     toastedApi({
-      errorMessage: "item deleted",
-      successMessage: "Something went wrong try again",
+      successMessage: "item deleted",
+      errorMessage: "Something went wrong try again",
       api: removeApi,
       params: {
         id: props.data.id!,
