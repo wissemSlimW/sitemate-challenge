@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useGetAllApi } from "./api/useGetAllApi";
 import { AddCard, Card } from "./components";
 import { useStyles } from "./style";
 import { ToastContainer } from "react-toastify";

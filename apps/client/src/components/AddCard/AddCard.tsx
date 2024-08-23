@@ -19,7 +19,7 @@ export const AddCard = (props: AddCardProps) => {
         handleError: (err) => {
           console.log(err);
         },
-        handleResponse: (response) => {
+        handleResponse: (response:Issue) => {
           props.setData((prev) => [...prev, response]);
           props.handleCancel();
           setData({

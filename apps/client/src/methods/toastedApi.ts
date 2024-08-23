@@ -15,7 +15,7 @@ export const toastedApi = <Model>({
             params?.handleError?.(err)
             toast.error(errorMessage)
         },
-        handleResponse: (res: any) => {
+        handleResponse: (res: Model) => {
             params?.handleResponse?.(res)
             toast.success(successMessage)
         }

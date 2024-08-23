@@ -19,14 +19,14 @@ interface UpdateApi<T> {
     id?: string,
     body?: Partial<T>,
     handleError?: (err: any) => void
-    handleResponse?: (res: any) => void,
+    handleResponse?: (res: T) => void,
     setReady: React.Dispatch<React.SetStateAction<boolean>>,
 }
 interface AddApi<T> {
     endpoint: string,
     body?: Partial<T>,
     handleError?: (err: any) => void
-    handleResponse?: (res: any) => void,
+    handleResponse?: (res: T) => void,
     setReady: React.Dispatch<React.SetStateAction<boolean>>,
 }
 type API<T> = RemoveApi | UpdateApi<T> | AddApi<T>

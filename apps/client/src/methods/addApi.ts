@@ -11,7 +11,7 @@ export const addApi = <T>({
   setReady(false);
   axios
     .post(`${BASE_URL}/${endpoint}`, body)
-    .then((response) => handleResponse?.(response))
+    .then((response) => handleResponse?.(response.data))
     .catch((err) => {
       console.log(err);
       handleError?.(err?.response);

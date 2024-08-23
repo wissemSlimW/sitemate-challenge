@@ -12,7 +12,7 @@ export const updateApi = <T>({
   setReady(false);
   axios
     .put(`${BASE_URL}/${endpoint}/${id}`, body)
-    .then((response) => handleResponse?.(response))
+    .then((response) => handleResponse?.(response.data))
     .catch((err) => {
       console.log(err);
       handleError?.(err?.response);

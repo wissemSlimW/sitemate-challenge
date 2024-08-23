@@ -11,7 +11,7 @@ export const removeApi = ({
   setReady(false);
   axios
     .delete(`${BASE_URL}/${endpoint}/${id}`)
-    .then(async (response) => handleResponse?.(response))
+    .then(async (response) => handleResponse?.(response.data))
     .catch((err) => {
       console.log(err);
       handleError?.(err?.response);

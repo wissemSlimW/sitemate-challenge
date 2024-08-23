@@ -20,7 +20,7 @@ export const Card = (props: CardProps) => {
         handleError: (err) => {
           console.log(err);
         },
-        handleResponse: (response) => {
+        handleResponse: (response: Issue) => {
           setMode("view");
           props.setData((prev) => {
             const index = prev.findIndex((item) => item._id === props.data._id);
