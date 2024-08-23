@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-
-const apiUrl = import.meta.env.VITE_BASE_URL;
+import { BASE_URL } from "../utils/config";
 
 export const useFindOneApi = <T>({ endpoint, id, handleError }: FindOneApi) => {
   const [ready, setReady] = useState(true);
@@ -11,7 +10,7 @@ export const useFindOneApi = <T>({ endpoint, id, handleError }: FindOneApi) => {
     if (id) {
       setReady(false);
       axios
-        .get(`${apiUrl}/${endpoint}/${id}`)
+        .get(`${BASE_URL}/${endpoint}/${id}`)
         .then((response: AxiosResponse) => setData(response.data || null!))
         .catch((err) => {
           console.log(err);

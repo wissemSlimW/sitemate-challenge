@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = import.meta.env.VITE_BASE_URL;
+import { BASE_URL } from "../utils/config";
 
 export const removeApi = ({
   endpoint,
@@ -10,7 +10,7 @@ export const removeApi = ({
 }: RemoveApi) => {
   setReady(false);
   axios
-    .delete(`${apiUrl}/${endpoint}/${id}`)
+    .delete(`${BASE_URL}/${endpoint}/${id}`)
     .then(async (response) => handleResponse?.(response))
     .catch((err) => {
       console.log(err);

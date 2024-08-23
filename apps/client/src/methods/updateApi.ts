@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const apiUrl = import.meta.env.VITE_BASE_URL;
+import { BASE_URL } from "../utils/config";
 
 export const updateApi = <T>({
   endpoint,
@@ -12,7 +11,7 @@ export const updateApi = <T>({
 }: UpdateApi<T>) => {
   setReady(false);
   axios
-    .put(`${apiUrl}/${endpoint}${id ? "/" + id : ""}`, body)
+    .put(`${BASE_URL}/${endpoint}/${id}`, body)
     .then((response) => handleResponse?.(response))
     .catch((err) => {
       console.log(err);

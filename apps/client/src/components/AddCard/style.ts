@@ -12,34 +12,14 @@ export const useStyles = createUseStyles({
     gap: 10,
     background: "white",
   },
-  header: { display: "flex", justifyContent: "space-between", gap: 10 },
 
-  title: {
-    fontFamily: "Poppins",
-    marginBlock: 0,
-    paddingBlock: 5,
-    fontSize: 20,
-    color: "#333333",
-  },
-  menu: { display: "flex", gap: 10, alignItems: "center" },
-  menuBtn: {
-    outline: "none",
-    padding:0,
-    border: "none",
-    display: "flex",
-    backgroundColor: "transparent",
-  },
-  close: {
-    "&:hover": {
-      color: "red",
-    },
-  },
-  edit: {
+  save: {
     "&:hover": {
       color: "#3DA9FC",
+      borderColor: "#3DA9FC",
     },
   },
-  delete: {
+  cancel: {
     "&:hover": {
       color: "red",
     },
@@ -69,5 +49,20 @@ export const useStyles = createUseStyles({
     borderRadius: 10,
     padding: 10,
     resize: "none",
+  },
+  menu: { display: "flex", gap: 10, width: "100%", justifyContent: "end" },
+  btn: {
+    fontFamily: "Poppins",
+    fontWeight: 500,
+    background: "transparent",
+    color: "#333333",
+    padding: 10,
+    cursor: "pointer",
+    borderRadius: 10,
+    border: "2px solid #efefef",
+    display: "flex",
+    gap: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

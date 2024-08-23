@@ -27,9 +27,10 @@ export const useStyles = createUseStyles({
     height: 44,
   },
   content: {
+    padding:20,
     flex: 1,
     display: "flex",
-    gap: 10,
+    gap: 15,
     flexWrap: "wrap",
     background: "#f8f8f8",
     borderRadius: 20,
